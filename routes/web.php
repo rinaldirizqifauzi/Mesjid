@@ -3,7 +3,10 @@
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\JeniskegiatanController;
 use App\Http\Controllers\KegiatanController;
+use App\Http\Controllers\PenceramahController;
+use App\Http\Controllers\PengurusController;
 
 /*
 |--------------------------------------------------------------------------
@@ -29,4 +32,7 @@ Auth::routes([
 Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard.index');
 Route::group(['prefix' => '/dashboard'], function(){
     Route::resource('/kegiatan', KegiatanController::class);
+    Route::resource('/jenis-kegiatan', JeniskegiatanController::class);
+    Route::resource('/penceramah', PenceramahController::class);
+    Route::resource('/pengurus', PengurusController::class);
 });

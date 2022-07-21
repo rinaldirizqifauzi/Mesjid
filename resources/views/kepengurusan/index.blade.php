@@ -1,11 +1,11 @@
 @extends('layouts.backend')
 
 @section('title')
-    Kegiatan | {{ config('app.name') }}
+    Kepungurusan | {{ config('app.name') }}
 @endsection
 
 @section('title-page')
-    Kegiatan
+    Kepungurusan
 @endsection
 
 @section('content-header')
@@ -19,7 +19,7 @@
                 <div class="numbers">
                     <p class="text-sm mb-0 text-uppercase font-weight-bold">Database</p>
                     <h5 class="font-weight-bolder">
-                      Kegiatan
+                      Kepengurusan
                     </h5>
                 </div>
               </a>
@@ -38,11 +38,11 @@
         <div class="card-body p-3">
           <div class="row">
             <div class="col-8">
-              <a href="{{ route('jenis-kegiatan.index') }}">
+              <a href="">
                 <div class="numbers">
                     <p class="text-sm mb-0 text-uppercase font-weight-bold">Database</p>
                     <h5 class="font-weight-bolder">
-                      Jenis Kegiatan
+                      Jabatan
                     </h5>
                 </div>
               </a>
@@ -64,7 +64,7 @@
     <div class="card-header  pb-0 p-3">
       <div class="d-flex justify-content-between">
         <h6 class="mb-2">Sales by Country</h6>
-        <a href="{{ route('kegiatan.create') }}" class="btn btn-primary btn-sm mb-0"> Tambah Data</a>
+        <a href="{{ route('pengurus.create') }}" class="btn btn-primary btn-sm mb-0"> Tambah Data</a>
       </div>
     </div>
     <div class="table-responsive">

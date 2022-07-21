@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Kegiatan;
+use App\Models\Jeniskegiatan;
 use Illuminate\Http\Request;
 
-class KegiatanController extends Controller
+class JeniskegiatanController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,7 +14,7 @@ class KegiatanController extends Controller
      */
     public function index()
     {
-        return view('kegiatan.index');
+        return view('jenis-kegiatan.index');
     }
 
     /**
@@ -24,7 +24,7 @@ class KegiatanController extends Controller
      */
     public function create()
     {
-        return view('kegiatan.create');
+        return view('jenis-kegiatan.create');
     }
 
     /**
@@ -41,10 +41,10 @@ class KegiatanController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Kegiatan  $kegiatan
+     * @param  \App\Models\Jeniskegiatan  $jeniskegiatan
      * @return \Illuminate\Http\Response
      */
-    public function show(Kegiatan $kegiatan)
+    public function show(Jeniskegiatan $jeniskegiatan)
     {
         //
     }
@@ -52,10 +52,10 @@ class KegiatanController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Kegiatan  $kegiatan
+     * @param  \App\Models\Jeniskegiatan  $jeniskegiatan
      * @return \Illuminate\Http\Response
      */
-    public function edit(Kegiatan $kegiatan)
+    public function edit(Jeniskegiatan $jeniskegiatan)
     {
         //
     }
@@ -64,10 +64,10 @@ class KegiatanController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Kegiatan  $kegiatan
+     * @param  \App\Models\Jeniskegiatan  $jeniskegiatan
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Kegiatan $kegiatan)
+    public function update(Request $request, Jeniskegiatan $jeniskegiatan)
     {
         //
     }
@@ -75,10 +75,10 @@ class KegiatanController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Kegiatan  $kegiatan
+     * @param  \App\Models\Jeniskegiatan  $jeniskegiatan
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Kegiatan $kegiatan)
+    public function destroy(Jeniskegiatan $jeniskegiatan)
     {
         //
     }
