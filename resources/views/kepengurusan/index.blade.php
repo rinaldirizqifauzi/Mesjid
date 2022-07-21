@@ -95,14 +95,14 @@
                     <h6 class="mb-0 text-sm text-center">{{ $field->jabatan->nama_jabatan }}</h6>
                   </td>
                   <td>
-                    <h6 class="mb-0 text-sm text-center">{{ $field->jk }}</h6>
+                    <h6 class="mb-0 text-sm text-center">{{ $field->jenis_kelamin }}</h6>
                   </td>
                   <td>
                     <h6 class="mb-0 text-sm text-center">{{ $field->umur }}</h6>
                   </td>
                   <td>
-                    <a href="{{ route('penceramah.edit', ['penceramah' => $field]) }}" class="btn btn-xs mb-1 btn-warning">Edit </a>
-                    <form action="{{ route('penceramah.destroy', ['penceramah' => $field]) }}" method="POST" class="d-inline">
+                    <a href="{{ route('pengurus.edit', ['penguru' => $field]) }}" class="btn btn-xs mb-1 btn-warning">Edit </a>
+                    <form action="{{ route('pengurus.destroy', ['penguru' => $field]) }}" method="POST" class="d-inline">
                         @method('delete')
                         @csrf
                         <button class="btn btn-xs mb-1 btn-danger" onclick="return confirm('Apa Kamu Yakin Menghapus Data Ini')">Hapus</i></button>

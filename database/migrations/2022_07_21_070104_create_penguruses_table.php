@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id();
             $table->string('nama');
             $table->unsignedBigInteger('id_jabatan');
-            $table->string('jk');
+            $table->enum('jenis_kelamin', ['Laki-Laki', 'Perempuan']);
             $table->string('umur');
             $table->timestamps();
 

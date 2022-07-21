@@ -10,7 +10,7 @@ class Pengurus extends Model
     use HasFactory;
 
     protected $fillable = [
-        'nama', 'id_jabatan', 'jk','umur'
+        'nama', 'id_jabatan', 'jenis_kelamin','umur'
     ];
 
     public function jabatan()

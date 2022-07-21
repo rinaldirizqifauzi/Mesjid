@@ -41,12 +41,12 @@ class PengurusController extends Controller
         $validatedData = $request->validate([
             'nama' => 'required',
             'id_jabatan' => 'required',
-            'jk' => 'required',
+            'jenis_kelamin' => 'required',
             'umur' => 'required',
         ],[
             'nama.required' => 'Nama wajib diisi !!',
             'id_jabatan.required' => 'Jabatan wajib dipilih !!',
-            'jk.required' => 'Jenis Kelamin wajib diis !!',
+            'jenis_kelamin.required' => 'Jenis Kelamin wajib diisi !!',
             'umur.required' => 'Umur wajib diisi !!',
         ]);
 
@@ -71,9 +71,13 @@ class PengurusController extends Controller
      * @param  \App\Models\Pengurus  $pengurus
      * @return \Illuminate\Http\Response
      */
-    public function edit(Pengurus $pengurus)
+    public function edit(Pengurus $penguru)
     {
-        //
+        return view('kepengurusan.edit', [
+            'pengurus' => $penguru,
+            'jabatan' => Jabatan::all(),
+            'jabatanSelected' => $penguru->first(),
+        ]);
     }
 
     /**
@@ -83,9 +87,22 @@ class PengurusController extends Controller
      * @param  \App\Models\Pengurus  $pengurus
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Pengurus $pengurus)
+    public function update(Request $request, Pengurus $penguru)
     {
-        //
+        $validatedData = $request->validate([
+            'nama' => 'required',
+            'id_jabatan' => 'required',
+            'jenis_kelamin' => 'required',
+            'umur' => 'required',
+        ],[
+            'nama.required' => 'Nama wajib diisi !!',
+            'id_jabatan.required' => 'Jabatan wajib dipilih !!',
+            'jenis_kelamin.required' => 'Jenis Kelamin wajib diisi !!',
+            'umur.required' => 'Umur wajib diisi !!',
+        ]);
+
+        $penguru->update($validatedData);
+        return redirect()->route('pengurus.index');
     }
 
     /**
@@ -94,8 +111,9 @@ class PengurusController extends Controller
      * @param  \App\Models\Pengurus  $pengurus
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Pengurus $pengurus)
+    public function destroy(Pengurus $penguru)
     {
-        //
+        Pengurus::destroy($penguru->id);
+        return redirect()->route('pengurus.index');
     }
 }
