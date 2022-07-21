@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\JabatanController;
 use App\Http\Controllers\JeniskegiatanController;
 use App\Http\Controllers\KegiatanController;
 use App\Http\Controllers\PenceramahController;
@@ -35,4 +36,5 @@ Route::group(['prefix' => '/dashboard'], function(){
     Route::resource('/jenis-kegiatan', JeniskegiatanController::class);
     Route::resource('/penceramah', PenceramahController::class);
     Route::resource('/pengurus', PengurusController::class);
+    Route::resource('/jabatan', JabatanController::class);
 });

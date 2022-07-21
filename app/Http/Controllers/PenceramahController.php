@@ -14,7 +14,8 @@ class PenceramahController extends Controller
      */
     public function index()
     {
-        return view('penceramah.index');
+        $penceramah = Penceramah::all();
+        return view('penceramah.index',compact('penceramah'));
     }
 
     /**
@@ -35,7 +36,16 @@ class PenceramahController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validatedData = $request->validate([
+            'nama' => 'required',
+            'alamat' => 'required',
+        ],[
+            'nama.required' => 'Nama wajib diisi !!',
+            'alamat.required' => 'Alamat wajib diisi !!',
+        ]);
+
+        Penceramah::create($validatedData);
+        return redirect()->route('penceramah.index');
     }
 
     /**
@@ -57,7 +67,9 @@ class PenceramahController extends Controller
      */
     public function edit(Penceramah $penceramah)
     {
-        //
+        return view('penceramah.edit',[
+            'penceramah' => $penceramah,
+        ]);
     }
 
     /**
@@ -69,7 +81,16 @@ class PenceramahController extends Controller
      */
     public function update(Request $request, Penceramah $penceramah)
     {
-        //
+        $validatedData = $request->validate([
+            'nama' => 'required',
+            'alamat' => 'required',
+        ],[
+            'nama.required' => 'Nama wajib diisi !!',
+            'alamat.required' => 'Alamat wajib diisi !!',
+        ]);
+
+        $penceramah->update($validatedData);
+        return redirect()->route('penceramah.index');
     }
 
     /**
@@ -80,6 +101,7 @@ class PenceramahController extends Controller
      */
     public function destroy(Penceramah $penceramah)
     {
-        //
+        Penceramah::destroy($penceramah->id);
+        return redirect()->route('penceramah.index');
     }
 }

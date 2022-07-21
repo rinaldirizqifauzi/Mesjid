@@ -5,16 +5,16 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Pengurus extends Model
+class Jabatan extends Model
 {
     use HasFactory;
 
     protected $fillable = [
-        'nama', 'id_jabatan', 'jk','umur'
+        'nama_jabatan'
     ];
 
-    public function jabatan()
+    public function pengurus()
     {
-        return $this->belongsTo(Jabatan::class, 'id_jabatan');
+        return $this->hasMany(Pengurus::class);
     }
 }

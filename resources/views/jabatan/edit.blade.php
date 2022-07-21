@@ -1,11 +1,11 @@
 @extends('layouts.backend')
 
 @section('title')
-    Kepengurusan | {{ config('app.name') }}
+    Jabatan | {{ config('app.name') }}
 @endsection
 
 @section('title-page')
-   Tambah Kepengurusan
+   Edit Jabatan
 @endsection
 
 @section('content-header')
@@ -63,61 +63,28 @@
 <div class="card">
     <div class="card-header  pb-0 p-3">
       <div class="d-flex justify-content-between">
-        <h6 class="mb-2">Form Tambah Data Kepengurusan</h6>
+        <h6 class="mb-2">Form Edit Data Jabatan</h6>
       </div>
     </div>
     {{-- Form --}}
    <div class="container">
-    <form action="{{ route('pengurus.store') }}" method="POST">
+    <form action="{{ route('jabatan.update', ['jabatan' => $jabatan]) }}" method="POST">
         @csrf
+        @method('put')
         <div class="row">
-          <div class="col-md-6">
-            <label for="nama">Nama</label>
+          <div class="col-md-12">
+            <label for="nama_jabatan">Nama Jabatan</label>
             <div class="form-group">
-              <input type="text" class="form-control @error('nama') is-invalid @enderror" placeholder="Masukan Nama Pengurus ..." id="nama" name="nama">
-                @error('nama')
+              <input type="text" value="{{ old('nama_jabatan', $jabatan->nama_jabatan) }}" class="form-control @error('nama_jabatan') is-invalid @enderror" placeholder="Masukan Nama Jabatan ..." id="nama_jabatan" name="nama_jabatan">
+                @error('nama_jabatan')
                     <label style="color: red">{{ $message }}</label>
                 @enderror
             </div>
           </div>
-          <div class="col-md-6">
-                <label for="id_jabatan">Jabatan</label>
-                <div class="form-group">
-                    <select class="form-control @error('id_jabatan') is-invalid @enderror" id="id_jabatan" name="id_jabatan">
-                    <option>Pilih Jabatan</option>
-                        @foreach ($jabatan as $field)
-                            <option value="{{ $field->id }}">{{ $field->nama_jabatan }}</option>
-                        @endforeach
-                    </select>
-                    @error('id_jabatan')
-                        <label style="color: red">{{ $message }}</label>
-                    @enderror
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-6">
-                <label for="jk">Jenis Kelamin</label>
-                <div class="form-group">
-                  <input type="text" class="form-control @error('jk') is-invalid @enderror" placeholder="Masukan Jenis Kelamin Pengurus ..." id="jk" name="jk">
-                  @error('jk')
-                      <label style="color: red">{{ $message }}</label>
-                  @enderror
-                </div>
-            </div>
-            <div class="col-md-6">
-                <label for="umur">Umur</label>
-                <div class="form-group">
-                  <input type="number" class="form-control @error('umur') is-invalid @enderror" placeholder="Masukan Umur Pengurus ..." id="umur" name="umur">
-                  @error('umur')
-                    <label style="color: red">{{ $message }}</label>
-                  @enderror
-                </div>
-            </div>
         </div>
         <div class="d-flex justify-content-end">
-            <a href="{{ route('pengurus.index') }}" class="btn btn-dark btn-sm mb-2 me-2"> Kembali</a>
-            <button type="submit" class="btn btn-primary btn-sm mb-2"> Simpan</button>
+            <a href="{{ route('jabatan.index') }}" class="btn btn-dark btn-sm mb-2 me-2"> Kembali</a>
+            <button type="submit" class="btn btn-warning btn-sm mb-2"> Ubah</button>
         </div>
     </form>
    </div>

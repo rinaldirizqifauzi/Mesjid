@@ -15,7 +15,13 @@ return new class extends Migration
     {
         Schema::create('penguruses', function (Blueprint $table) {
             $table->id();
+            $table->string('nama');
+            $table->unsignedBigInteger('id_jabatan');
+            $table->string('jk');
+            $table->string('umur');
             $table->timestamps();
+
+            $table->foreign('id_jabatan')->references('id')->on('jabatans');
         });
     }
 

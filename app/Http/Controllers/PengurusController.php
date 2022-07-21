@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Jabatan;
 use App\Models\Pengurus;
 use Illuminate\Http\Request;
 
@@ -14,7 +15,8 @@ class PengurusController extends Controller
      */
     public function index()
     {
-        return view('kepengurusan.index');
+        $pengurus = Pengurus::all();
+        return view('kepengurusan.index', compact('pengurus'));
     }
 
     /**
@@ -24,7 +26,8 @@ class PengurusController extends Controller
      */
     public function create()
     {
-        return view('kepengurusan.create');
+        $jabatan = Jabatan::all();
+        return view('kepengurusan.create', compact('jabatan'));
     }
 
     /**
@@ -35,7 +38,20 @@ class PengurusController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validatedData = $request->validate([
+            'nama' => 'required',
+            'id_jabatan' => 'required',
+            'jk' => 'required',
+            'umur' => 'required',
+        ],[
+            'nama.required' => 'Nama wajib diisi !!',
+            'id_jabatan.required' => 'Jabatan wajib dipilih !!',
+            'jk.required' => 'Jenis Kelamin wajib diis !!',
+            'umur.required' => 'Umur wajib diisi !!',
+        ]);
+
+        Pengurus::create($validatedData);
+        return redirect()->route('pengurus.index');
     }
 
     /**
